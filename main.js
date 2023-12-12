@@ -206,7 +206,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (loyaltyPointsValue) {
             loyaltyPointsValue.textContent = loyaltyPoints;
         }
-    }
+                    // Retrieving Existing Room Details From Local Storage
+                    const addloyaltypoints = JSON.parse(localStorage.getItem('Add-Loyalty-Points')) || [];
+                    addloyaltypoints.push(loyaltyPoints);
+                
+                    // Store Loyalty Points Details In Local Storage
+                    localStorage.setItem('Add-Loyalty-Points', JSON.stringify(addloyaltypoints));
+        
+                    alert('Loyalty Points Have Been Stored!');
+                }
+    
     // Event Listener for Check Loyalty Points Button
     if (loyaltyBtn) {
         loyaltyBtn.addEventListener('click', calculateLoyaltyPoints);
